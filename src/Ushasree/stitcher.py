@@ -165,7 +165,8 @@ class PanaromaStitcher():
 
         mid_index = len(images) // 2
         anchor_image = images[mid_index]
-        focal_length = (anchor_image,shape[1]/2) / np.tan(np.pi / 5) 
+        diagonal_length = np.sqrt(anchor_image.shape[0] ** 2 + anchor_image.shape[1] ** 2)
+        focal_length = diagonal_length / np.tan(np.pi / 5)
 
         cylindrical_images = [self.apply_cylindrical_projection(img, focal_length) for img in images]
 
