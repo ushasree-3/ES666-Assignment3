@@ -72,7 +72,7 @@ class PanaromaStitcher():
         src_points = np.float32([keypoints1[m.queryIdx].pt for m in good_matches]).reshape(-1, 2)
         dst_points = np.float32([keypoints2[m.trainIdx].pt for m in good_matches]).reshape(-1, 2)
 
-        homography, inliers = self.RANSAC_homography(src_points, dst_points, max_iterations=5000)
+        homography, inliers = self.RANSAC_homography(src_points, dst_points, max_iterations=2000)
         return homography
 
     def apply_cylindrical_projection(self, image, focal_length):
